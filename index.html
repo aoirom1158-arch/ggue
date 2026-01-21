@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>部门员工投票小程序</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <h1>部门员工投票小程序</h1>
+        <p>公平、实时、透明的部门评选平台</p>
+      </div>
+      <div class="user-info" id="userInfo">
+        <span class="status-dot"></span>
+        <span class="user-name">未登录</span>
+        <button class="ghost" id="logoutBtn">退出</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card login" id="loginCard">
+        <h2>企业微信工作台登录</h2>
+        <p>请通过企业微信工作台完成身份验证，登录后即可投票。</p>
+        <div class="login-actions">
+          <button class="primary" id="wecomLoginBtn">使用企业微信登录</button>
+          <button class="ghost" id="mockLoginBtn">模拟登录（演示）</button>
+        </div>
+        <div class="login-helper">
+          <label>
+            模拟姓名
+            <input id="mockNameInput" placeholder="请输入姓名" />
+          </label>
+        </div>
+        <div class="login-note">
+          <p>正式环境：请在企业微信工作台配置 OAuth，获取 code 后回跳到本页面。</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <section class="card" id="votingCard">
+          <div class="card-header">
+            <h2>投票区</h2>
+            <span class="badge" id="voteQuota">可投票次数：0</span>
+          </div>
+          <p class="muted">为你支持的同事投票，投票结果实时更新。</p>
+          <div class="employee-list" id="employeeList"></div>
+        </section>
+
+        <section class="card" id="portalCard">
+          <div class="card-header">
+            <h2>实时票数门户</h2>
+            <span class="badge live">实时更新</span>
+          </div>
+          <div class="portal" id="portal"></div>
+        </section>
+      </section>
+
+      <section class="card admin" id="adminCard">
+        <h2>管理员设置</h2>
+        <p class="muted">设置候选员工名单与每位员工可投票次数。</p>
+        <div class="admin-grid">
+          <label>
+            员工名单（逗号分隔）
+            <textarea id="employeeInput" rows="3" placeholder="例如：张三,李四,王五"></textarea>
+          </label>
+          <label>
+            每位员工可投票次数
+            <input type="number" id="voteLimitInput" min="1" max="20" value="3" />
+          </label>
+        </div>
+        <div class="admin-actions">
+          <button class="primary" id="saveSettingsBtn">保存设置</button>
+          <button class="ghost" id="resetBtn">重置票数</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
